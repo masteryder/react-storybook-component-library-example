@@ -1,0 +1,32 @@
+{
+  "name": "wedo-component-library-example",
+  "version": "1.0.0",
+  "description": "A component library example for wedo with storybook",
+  "main": "index.js",
+  "author": "João Ventura",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@storybook/addon-actions": "^6.3.7",
+    "@storybook/addon-essentials": "^6.3.7",
+    "@storybook/addon-links": "^6.3.7",
+    "@storybook/react": "^6.3.7",
+    "@types/react": "^17.0.19",
+    "babel-loader": "^8.2.2",
+    "node-sass": "^6.0.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "sass-loader": "^10.0.0",
+    "typescript": "^4.3.5",
+    "yo": "^4.3.0"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "scripts": {
+    "new-component": "npx yo react-storybook-component",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  }
+}

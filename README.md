@@ -1,0 +1,1 @@
+Stories let you render the different states of your UI component and lets you play with the different states with something called Storybook Controls, which we will get to in a minute. These are development only files and hence won't be included in our final library bundle.
