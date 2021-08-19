@@ -44,7 +44,14 @@ module.exports = class extends Generator {
       }
     );
 
-    this.choices = {...this.pathObj, ...this.nameObj};
+    this.typeObj = await this.prompt({
+      type: 'list',
+      name: "component-type",
+      message: "Where should the component be stored?",
+      choices: ["00-quarks","01-atoms","02-molecules","03-organisms","04-templates","05-pages"]
+    })
+
+    this.choices = {...this.pathObj, ...this.nameObj, ...this.typeObj};
     console.log(this.choices);
   }
   method1() {
@@ -56,23 +63,23 @@ module.exports = class extends Generator {
   }
 
   writing(){
-    
+    let path = `${this.choices['components-path']}/${this.choices['component-type']}/${this.choices['component-name']}`;
     this.fs.copyTpl(
       this.templatePath('Component.scss'),
-      this.destinationPath(`public/${this.choices['component-name']}.scss`),
+      this.destinationPath(`${path}/${this.choices['component-name']}.scss`),
       { lowercase_name: kebabize(this.choices['component-name']) }
     );
 
     this.fs.copyTpl(
       this.templatePath('Component.tsx'),
-      this.destinationPath(`public/${this.choices['component-name']}.tsx`),
+      this.destinationPath(`${path}/${this.choices['component-name']}.tsx`),
       { name: this.choices['component-name'] }
     );
 
     this.fs.copyTpl(
       this.templatePath('Component.stories.tsx'),
-      this.destinationPath(`public/${this.choices['component-name']}.stories.tsx`),
-      { name: this.choices['component-name'] , type: 'todoChangeMe'}
+      this.destinationPath(`${path}/${this.choices['component-name']}.stories.tsx`),
+      { name: this.choices['component-name'] , type: this.choices['component-type']}
     );
 
   }
